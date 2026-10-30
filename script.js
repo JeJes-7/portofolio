@@ -10,7 +10,7 @@ const projects = [
     description:
       "Chatbot CS toko laptop yang menjawab dari 5 dokumen toko. Dokumen disimpan di ChromaDB dan dicari dengan embedding multilingual-e5-small. Bot hanya menjawab dari dokumen dan meneruskan ke tim CS jika informasi tidak ada. Berjalan lewat Telegram, diuji dengan 19 skenario otomatis.",
     stack: ["RAG", "ChromaDB", "multilingual-e5-small", "Telegram"],
-    link: "", // TODO
+    link: "https://github.com/JeJes-7/Chatbot-Customer-Service-Berbasis-RAG",
   },
   {
     title: "Sistem Prediksi Gagal Jantung",
@@ -25,7 +25,7 @@ const projects = [
       "Grafana",
       "GitHub CI",
     ],
-    link: "", // TODO
+    link: "https://github.com/JeJes-7/MSML",
   },
   {
     title: "Predictive Maintenance Copilot",
@@ -33,7 +33,7 @@ const projects = [
     description:
       'Model deteksi kegagalan mesin hibrida (One-Class SVM + XGBoost; skor anomali OCSVM jadi fitur tambahan XGBoost), penyebab kerusakan dijelaskan dengan SHAP. Aplikasi "Maintenance Copilot" end-to-end: backend REST API Flask yang mengklasifikasikan mesin menjadi Normal/Warning/Critical, dashboard Streamlit, visualisasi SHAP per mesin, dan rekomendasi tindakan teknisi otomatis memakai LLM.',
     stack: ["One-Class SVM", "XGBoost", "SHAP", "Flask", "Streamlit", "LLM"],
-    link: "", // TODO
+    link: "https://github.com/JeJes-7/Sistem-Pemeliharaan-Mesin",
   },
 ];
 
