@@ -6,7 +6,7 @@
   <title>Jesika Yudiani Putri — Data Analysis &amp; Machine Learning Portfolio</title>
   <meta name="description" content="Portfolio Jesika Yudiani Putri, lulusan S1 Matematika Universitas Negeri Malang yang berfokus pada analisis data, statistik terapan, machine learning, dan MLOps.">
   <meta property="og:title" content="Jesika Yudiani Putri — Data Analysis &amp; Machine Learning Portfolio">
-  <meta property="og:description" content="Portfolio Jesika Yudiani Putri — S1 Matematika Universitas Negeri Malang. Proyek Machine Learning, MLOps, analisis sentimen, skripsi, dan analisis data.">
+  <meta property="og:description" content="Portfolio Jesika Yudiani Putri — S1 Matematika Universitas Negeri Malang. Proyek Machine Learning, MLOps, dan analisis data.">
   <meta property="og:type" content="website">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,8 +32,8 @@
       </nav>
 
       <button class="menu-btn" id="menu-btn" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Buka menu navigasi">
-        <svg class="icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg class="icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <svg class="icon-open" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon-close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
 
@@ -60,6 +60,7 @@
           Lihat Proyek
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
         </a>
+        <!-- TODO: letakkan file CV asli di folder yang sama dengan nama CV_Jesika_Yudiani_Putri.pdf -->
         <a class="btn btn-secondary" href="https://drive.google.com/uc?export=download&id=1pXy4o2S7-YFpFCZgjRTG6l5EXYhQtUND" target="_blank" rel="noopener noreferrer">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
           Download CV
@@ -80,6 +81,7 @@
       <div class="about-grid">
         <div class="about-side">
           <div class="avatar">
+            <!-- TODO: ganti foto profil di images/profile.jpg -->
             <img src="https://drive.google.com/thumbnail?id=1NNcRHustpJVsoriylhpeoi99rXWDEJFg&sz=w600" referrerpolicy="no-referrer" alt="Foto Jesika Yudiani Putri" loading="lazy" width="192" height="192">
             <div class="avatar-fallback" aria-hidden="true">JY</div>
           </div>
@@ -115,36 +117,55 @@
       </div>
     </section>
 
-    <!-- PROJECTS (carousel; kartu dibuat dari array `projects` di script.js) -->
+    <!-- PROJECTS -->
     <section id="projects" class="section reveal" aria-labelledby="projects-title">
       <div class="section-head">
         <div>
           <h2 class="section-label">Projects</h2>
-          <h3 id="projects-title" class="section-title">Skripsi, Machine Learning &amp; MLOps</h3>
+          <h3 id="projects-title" class="section-title">Machine Learning &amp; MLOps</h3>
         </div>
-        <p class="muted small" id="project-count">klik kartu untuk detail</p>
+        <p class="muted small">3 proyek · klik kartu untuk detail</p>
       </div>
 
-      <div class="carousel" id="carousel" role="region" aria-roledescription="carousel" aria-label="Daftar proyek">
-        <div class="carousel-track" id="carousel-track" tabindex="0" aria-label="Daftar proyek, geser dengan panah kiri dan kanan">
-          <noscript><p class="muted">Aktifkan JavaScript untuk melihat daftar proyek.</p></noscript>
-        </div>
-        <div class="carousel-progress" aria-hidden="true"><span id="carousel-progress"></span></div>
-        <div class="carousel-controls">
-          <div class="carousel-dots" id="carousel-dots" role="group" aria-label="Pilih posisi proyek"></div>
-          <div class="carousel-buttons">
-            <button class="carousel-btn" id="carousel-play" type="button" aria-pressed="false" aria-label="Jeda geser otomatis">
-              <svg class="i-pause" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
-              <svg class="i-play" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <button class="carousel-btn" id="carousel-prev" type="button" aria-label="Proyek sebelumnya">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="carousel-btn" id="carousel-next" type="button" aria-label="Proyek berikutnya">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-          </div>
-        </div>
+      <div class="project-grid">
+        <button class="card project-card" type="button" data-project="0" aria-haspopup="dialog">
+          <span class="project-body">
+            <span class="icon-tile" aria-hidden="true">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-5l-5 5v-5z"/></svg>
+            </span>
+            <span class="project-title">Chatbot Customer Service Berbasis RAG</span>
+            <span class="project-desc">Chatbot CS toko laptop yang menjawab dari 5 dokumen toko dan meneruskan ke tim CS jika informasi tidak ada. Berjalan lewat Telegram.</span>
+          </span>
+          <span class="tags">
+            <span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">Telegram</span>
+          </span>
+        </button>
+
+        <button class="card project-card" type="button" data-project="1" aria-haspopup="dialog">
+          <span class="project-body">
+            <span class="icon-tile" aria-hidden="true">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+            </span>
+            <span class="project-title">Sistem Prediksi Gagal Jantung</span>
+            <span class="project-desc">Model Random Forest untuk memprediksi kematian pasien gagal jantung dari data klinis, dengan pipeline MLOps end-to-end.</span>
+          </span>
+          <span class="tags">
+            <span class="tag">Random Forest</span><span class="tag">MLflow</span><span class="tag">Grafana</span>
+          </span>
+        </button>
+
+        <button class="card project-card" type="button" data-project="2" aria-haspopup="dialog">
+          <span class="project-body">
+            <span class="icon-tile" aria-hidden="true">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+            </span>
+            <span class="project-title">Predictive Maintenance Copilot</span>
+            <span class="project-desc">Model deteksi kegagalan mesin hibrida One-Class SVM + XGBoost, dijelaskan dengan SHAP, dengan dashboard Streamlit.</span>
+          </span>
+          <span class="tags">
+            <span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">Streamlit</span>
+          </span>
+        </button>
       </div>
     </section>
 
@@ -266,6 +287,7 @@
             <a class="btn btn-secondary" href="mailto:jesika.yudiani.p7@gmail.com">Email</a>
             <a class="btn btn-secondary" href="https://www.linkedin.com/in/jesika-yudiani-putri-58034533b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="btn btn-secondary" href="https://wa.me/628155628275" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <!-- TODO: letakkan file CV asli di folder yang sama -->
             <a class="btn btn-primary" href="https://drive.google.com/uc?export=download&id=1pXy4o2S7-YFpFCZgjRTG6l5EXYhQtUND" target="_blank" rel="noopener noreferrer">Download CV</a>
           </div>
         </div>
@@ -296,6 +318,7 @@
           <ul class="chips" id="modal-stack"></ul>
         </div>
         <div class="modal-actions">
+          <!-- TODO: isi link GitHub/portofolio tiap proyek di script.js (properti "link") -->
           <a class="btn btn-secondary" id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Link portofolio (segera)</a>
           <button class="btn btn-primary" type="button" data-close>Tutup</button>
         </div>
