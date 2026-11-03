@@ -259,3 +259,144 @@ linkEl.addEventListener('click', (e) => {
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(init, 150); });
 })();
+
+/* ---------- Carousel proyek: autoplay, pause on hover, tombol, drag/swipe ---------- */
+(function projectCarousel() {
+  const root = document.getElementById('project-carousel');
+  if (!root) return;
+
+  const viewport = root.querySelector('.carousel-viewport');
+  const track = root.querySelector('.carousel-track');
+  const cards = Array.from(track.children);
+  const prevBtn = root.querySelector('.carousel-btn.prev');
+  const nextBtn = root.querySelector('.carousel-btn.next');
+  const dotsEl = root.querySelector('.carousel-dots');
+
+  const DELAY = 3500;               // jeda autoplay (ms)
+  let index = 0, spv = 3, step = 0;
+  let timer = null;
+  let hovering = false, focused = false, offscreen = false;
+
+  // drag state
+  let dragging = false, moved = false, startX = 0, dx = 0, pid = null;
+
+  const maxIndex = () => Math.max(0, cards.length - spv);
+  const clamp = (n) => Math.min(Math.max(n, 0), maxIndex());
+
+  function measure() {
+    spv = parseInt(getComputedStyle(root).getPropertyValue('--spv'), 10) || 1;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    step = cards[0].offsetWidth + gap;
+  }
+
+  function buildDots() {
+    dotsEl.innerHTML = '';
+    for (let i = 0; i <= maxIndex(); i++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'carousel-dot';
+      b.setAttribute('aria-label', 'Ke halaman ' + (i + 1));
+      b.addEventListener('click', () => go(i));
+      dotsEl.appendChild(b);
+    }
+    dotsEl.hidden = maxIndex() === 0;
+    prevBtn.hidden = nextBtn.hidden = maxIndex() === 0;
+  }
+
+  function render() {
+    index = clamp(index);
+    track.style.transform = 'translate3d(' + (-index * step) + 'px,0,0)';
+    Array.from(dotsEl.children).forEach((d, i) =>
+      i === index ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'));
+    // kartu di luar layar tidak bisa difokus (keyboard) / dibaca screen reader
+    cards.forEach((c, i) => { c.inert = i < index || i >= index + spv; });
+  }
+
+  // navigasi manual & autoplay: berputar (loop) di ujung
+  function go(i) {
+    index = i > maxIndex() ? 0 : i < 0 ? maxIndex() : i;
+    render();
+    start();
+  }
+
+  /* ----- Autoplay ----- */
+  function stop() { clearInterval(timer); timer = null; }
+  function start() {
+    stop();
+    if (reduceMotion || maxIndex() === 0) return;
+    timer = setInterval(() => {
+      if (hovering || focused || offscreen || dragging || document.hidden) return;
+      go(index + 1);
+    }, DELAY);
+  }
+
+  // pauseOnMouseEnter (hanya mouse, bukan sentuhan)
+  root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
+  root.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hovering = false; start(); } });
+  // pause juga saat navigasi keyboard
+  root.addEventListener('focusin', (e) => { if (e.target.matches(':focus-visible')) focused = true; });
+  root.addEventListener('focusout', () => { focused = false; });
+  // pause saat carousel tidak terlihat
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { offscreen = !e.isIntersecting; }).observe(root);
+  }
+
+  prevBtn.addEventListener('click', () => go(index - 1));
+  nextBtn.addEventListener('click', () => go(index + 1));
+
+  /* ----- Drag / swipe (mouse + sentuh) ----- */
+  viewport.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    dragging = true; moved = false; dx = 0;
+    startX = e.clientX; pid = e.pointerId;
+  });
+
+  viewport.addEventListener('pointermove', (e) => {
+    if (!dragging || e.pointerId !== pid) return;
+    dx = e.clientX - startX;
+    if (!moved) {
+      if (Math.abs(dx) < 6) return;          // abaikan getaran kecil agar klik kartu tetap jalan
+      moved = true;
+      viewport.setPointerCapture(pid);
+      viewport.classList.add('is-dragging');
+      track.classList.add('no-anim');
+    }
+    track.style.transform = 'translate3d(' + (-index * step + dx) + 'px,0,0)';
+  });
+
+  function endDrag(e) {
+    if (!dragging || e.pointerId !== pid) return;
+    dragging = false;
+    if (moved) {
+      viewport.classList.remove('is-dragging');
+      track.classList.remove('no-anim');
+      let delta = Math.round(-dx / step);
+      if (delta === 0 && Math.abs(dx) > step * 0.2) delta = dx < 0 ? 1 : -1;
+      index = clamp(index + delta);
+      render();
+      start();
+      setTimeout(() => { moved = false; }, 100);
+    }
+  }
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+
+  // setelah drag, jangan buka modal proyek
+  viewport.addEventListener('click', (e) => {
+    if (moved) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+  track.addEventListener('dragstart', (e) => e.preventDefault());
+
+  /* ----- Layout responsif ----- */
+  function relayout() {
+    track.classList.add('no-anim');
+    measure();
+    buildDots();
+    render();
+    void track.offsetWidth;                   // paksa reflow, lalu aktifkan animasi lagi
+    track.classList.remove('no-anim');
+  }
+  if ('ResizeObserver' in window) new ResizeObserver(relayout).observe(viewport);
+  relayout();
+  start();
+})();
