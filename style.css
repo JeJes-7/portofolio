@@ -202,6 +202,8 @@ main { padding-top: 48px; padding-bottom: 64px; counter-reset: sec; }
 .project-card:nth-child(1) { --c: var(--brand); }
 .project-card:nth-child(2) { --c: var(--violet); }
 .project-card:nth-child(3) { --c: var(--amber); }
+.project-card:nth-child(4) { --c: var(--pink); }
+.project-card:nth-child(5) { --c: var(--brand-dark); }
 .project-card:hover { border-color: var(--c); box-shadow: 0 10px 34px rgba(0, 0, 0, .45); transform: translateY(-4px); }
 .project-card:hover::after { opacity: .5; transform: scale(1.3); }
 .project-body { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
