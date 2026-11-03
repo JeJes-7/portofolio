@@ -11,7 +11,7 @@ const projects = [
       'Sistem klasterisasi subtipe pasien diabetes berbasis PSO-KMeans pada data NHANES. Preprocessing statistik mencakup penanganan missing value, deteksi outlier, uji multikolinearitas, dan standardisasi z-score. Pasien dikelompokkan ke 4 subtipe (SIDD, SIRD, MARD, MOD) dengan K-Means yang dioptimasi PSO (DBI 1,3628), lalu diimplementasikan sebagai aplikasi web Laravel + MySQL dan diuji dengan 20 kasus blackbox testing.',
     stack: ['PSO', 'K-Means', 'NHANES', 'Laravel', 'MySQL'],
     link: 'https://diabetes.42web.io/',
-    linkLabel: 'Lihat Demo'
+    linkLabel: 'Lihat Demo (sistem klasterisasi offline)'
   },
   {
     title: 'Predictive Maintenance Copilot',
