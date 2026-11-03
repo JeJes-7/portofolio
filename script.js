@@ -5,12 +5,21 @@
    ============================================================ */
 const projects = [
   {
-    title: 'Chatbot Customer Service Berbasis RAG',
+    title: 'Skripsi: Klasterisasi Subtipe Pasien Diabetes',
+    category: 'Skripsi · Machine Learning',
+    description:
+      'Sistem klasterisasi subtipe pasien diabetes berbasis PSO-KMeans pada data NHANES. Preprocessing statistik mencakup penanganan missing value, deteksi outlier, uji multikolinearitas, dan standardisasi z-score. Pasien dikelompokkan ke 4 subtipe (SIDD, SIRD, MARD, MOD) dengan K-Means yang dioptimasi PSO (DBI 1,3628), lalu diimplementasikan sebagai aplikasi web Laravel + MySQL dan diuji dengan 20 kasus blackbox testing.',
+    stack: ['PSO', 'K-Means', 'NHANES', 'Laravel', 'MySQL'],
+    link: 'https://diabetes.42web.io/',
+    linkLabel: 'Lihat Demo'
+  },
+  {
+    title: 'Predictive Maintenance Copilot',
     category: 'Machine Learning',
     description:
-      'Chatbot CS toko laptop yang menjawab dari 5 dokumen toko. Dokumen disimpan di ChromaDB dan dicari dengan embedding multilingual-e5-small. Bot hanya menjawab dari dokumen dan meneruskan ke tim CS jika informasi tidak ada. Berjalan lewat Telegram, diuji dengan 19 skenario otomatis.',
-    stack: ['RAG', 'ChromaDB', 'multilingual-e5-small', 'Telegram'],
-    link: 'https://github.com/JeJes-7/Chatbot-Customer-Service-Berbasis-RAG'
+      'Model deteksi kegagalan mesin hibrida (One-Class SVM + XGBoost; skor anomali OCSVM jadi fitur tambahan XGBoost), penyebab kerusakan dijelaskan dengan SHAP. Aplikasi "Maintenance Copilot" end-to-end: backend REST API Flask yang mengklasifikasikan mesin menjadi Normal/Warning/Critical, dashboard Streamlit, visualisasi SHAP per mesin, dan rekomendasi tindakan teknisi otomatis memakai LLM.',
+    stack: ['One-Class SVM', 'XGBoost', 'SHAP', 'Flask', 'Streamlit', 'LLM'],
+    link: 'https://github.com/JeJes-7/Sistem-Pemeliharaan-Mesin'
   },
   {
     title: 'Sistem Prediksi Gagal Jantung',
@@ -21,12 +30,20 @@ const projects = [
     link: 'https://github.com/JeJes-7/MSML'
   },
   {
-    title: 'Predictive Maintenance Copilot',
+    title: 'Analisis Sentimen Ulasan Aplikasi Bibit',
+    category: 'NLP · Proyek Sertifikasi BNSP',
+    description:
+      'Klasifikasi sentimen (positif/negatif) pada 5.000 ulasan aplikasi Bibit dari Google Play Store; setelah ulasan netral dikeluarkan tersisa 4.696 ulasan. Teks Indonesia diproses lewat cleaning, normalisasi slang, stopword removal, dan stemming PySastrawi, lalu diubah dengan TF-IDF (unigram + bigram). Empat algoritma dibandingkan pada rasio 60:40 hingga 90:10, dan Logistic Regression dipilih karena paling konsisten dan seimbang antar kelas (akurasi 90%, F1 macro 88%).',
+    stack: ['PySastrawi', 'TF-IDF', 'Logistic Regression', 'Random Forest', 'Naïve Bayes', 'Decision Tree'],
+    link: 'https://github.com/JeJes-7/Analisis-Sentimen'
+  },
+  {
+    title: 'Chatbot Customer Service Berbasis RAG',
     category: 'Machine Learning',
     description:
-      'Model deteksi kegagalan mesin hibrida (One-Class SVM + XGBoost; skor anomali OCSVM jadi fitur tambahan XGBoost), penyebab kerusakan dijelaskan dengan SHAP. Aplikasi "Maintenance Copilot" end-to-end: backend REST API Flask yang mengklasifikasikan mesin menjadi Normal/Warning/Critical, dashboard Streamlit, visualisasi SHAP per mesin, dan rekomendasi tindakan teknisi otomatis memakai LLM.',
-    stack: ['One-Class SVM', 'XGBoost', 'SHAP', 'Flask', 'Streamlit', 'LLM'],
-    link: 'https://github.com/JeJes-7/Sistem-Pemeliharaan-Mesin'
+      'Chatbot CS toko laptop yang menjawab dari 5 dokumen toko. Dokumen disimpan di ChromaDB dan dicari dengan embedding multilingual-e5-small. Bot hanya menjawab dari dokumen dan meneruskan ke tim CS jika informasi tidak ada. Berjalan lewat Telegram, diuji dengan 19 skenario otomatis.',
+    stack: ['RAG', 'ChromaDB', 'multilingual-e5-small', 'Telegram'],
+    link: 'https://github.com/JeJes-7/Chatbot-Customer-Service-Berbasis-RAG'
   }
 ];
 
@@ -92,7 +109,7 @@ function openModal(index) {
 
   if (p.link) {
     linkEl.href = p.link;
-    linkEl.textContent = 'Lihat di GitHub';
+    linkEl.textContent = p.linkLabel || 'Lihat di GitHub';
     linkEl.removeAttribute('aria-disabled');
   } else {
     linkEl.href = '#';
